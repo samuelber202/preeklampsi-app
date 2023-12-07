@@ -8,7 +8,7 @@
   <div class="flex justify-center items-center h-screen">
     <div class="container card">
       <div class="container flex">
-        <div class="container flex flex-col p-10 h-full" style="width: 60%;">
+        <div class="container flex flex-col p-10 h-full">
           <div class="container flex items-center mb-5">
             <img
               class="logo"
@@ -17,61 +17,115 @@
               width="110px"
             />
             <h1 class="judul uppercase font-bold ml-3 text-2xl">
-              Klasifikasi <i>Severe Future</i> Preeklampsia
+              Klasifikasi Severe Future Preeklampsia
             </h1>
           </div>
           <div class="container h-full">
-            <form
-              action="/predict"
-              class="flex flex-col gap-5 h-full justify-center"
-              method="POST"
-            >
-              <div class="form-group">
-                <label for="age">Age</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="age"
-                  name="age"
-                  placeholder="Masukkan umur"
-                />
+            <form action="/predict" method="POST">
+              <div
+                style="overflow-y: scroll; height: 300px;"
+                class="container grid grid-cols-2 gap-5 max-sm:flex max-sm:flex-col overflow-auto"
+              >
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Masukkan nama ibu"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="age">Age</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="age"
+                    name="age"
+                    min="0"
+                    max="150"
+                    required
+                    placeholder="Masukkan umur"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="parity">Parity</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="parity"
+                    name="parity"
+                    min="0"
+                    max="10"
+                    placeholder="Masukkan nilai paritas"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="gest_age">Gestational Age</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="gest_age"
+                    name="gest_age"
+                    min="0"
+                    max="50"
+                    placeholder="Masukkan usia kehamilan (dalam minggu)"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="delivery">Delivery Method</label>
+                  <select
+                    required
+                    class="form-control"
+                    id="delivery"
+                    name="delivery"
+                  >
+                    <option selected value disabled>-- Pilih --</option>
+                    <option value="SC">SC</option>
+                    <option value="Spontaneous">Spontaneous</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="sgot">SGOT</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="sgot"
+                    name="sgot"
+                    placeholder="Masukkan nilai SGOT (units/L)"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="sgpt">SGPT</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="sgpt"
+                    name="sgpt"
+                    placeholder="Masukkan nilai SGPT (units/L)"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="bun">BUN</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="bun"
+                    name="bun"
+                    placeholder="Masukkan nilai BUN (mg/dL)"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="weight">Weight</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="weight"
-                  name="weight"
-                  placeholder="Masukkan berat badan"
-                />
+              <div class="container flex justify-end w-full">
+                <button type="submit" class="btn mt-5">Submit</button>
               </div>
-              <div class="form-group">
-                <label for="height">Height</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="height"
-                  name="height"
-                  placeholder="Masukkan tinggi badan"
-                />
-              </div>
-              <div class="form-group">
-                <label for="temperature">Temperature</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="temperature"
-                  name="temperature"
-                  placeholder="Masukkan suhu tubuh"
-                />
-              </div>
-              <button type="submit" class="btn btn-submit">Submit</button>
             </form>
           </div>
         </div>
         <div
-          class="container flex justify-center items-center"
+          class="container flex justify-center items-center max-sm:hidden"
           style="width: 40%;"
         >
           <img
