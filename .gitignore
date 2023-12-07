@@ -1,3 +1,6 @@
+# Prettier
+./prettierrc
+
 # NPM
 node_modules/
 
