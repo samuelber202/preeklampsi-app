@@ -1,0 +1,87 @@
+{% extends "base.j2" %}
+
+{% block title %}
+  <title>Preeklampsia App</title>
+{% endblock %}
+
+{% block body %}
+  <div class="flex justify-center items-center h-screen">
+    <div class="container card">
+      <div class="container flex">
+        <div class="container flex flex-col p-10 h-full" style="width: 60%;">
+          <div class="container flex items-center mb-5">
+            <img
+              class="logo"
+              src="{{ url_for('static', filename='img/logo.png') }}"
+              alt="logo"
+              width="110px"
+            />
+            <h1 class="judul uppercase font-bold ml-3 text-2xl">
+              Klasifikasi <i>Severe Future</i> Preeklampsia
+            </h1>
+          </div>
+          <div class="container h-full">
+            <form
+              action="/predict"
+              class="flex flex-col gap-5 h-full justify-center"
+              method="POST"
+            >
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="age"
+                  name="age"
+                  placeholder="Masukkan umur"
+                />
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="weight"
+                  name="weight"
+                  placeholder="Masukkan berat badan"
+                />
+              </div>
+              <div class="form-group">
+                <label for="height">Height</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="height"
+                  name="height"
+                  placeholder="Masukkan tinggi badan"
+                />
+              </div>
+              <div class="form-group">
+                <label for="temperature">Temperature</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="temperature"
+                  name="temperature"
+                  placeholder="Masukkan suhu tubuh"
+                />
+              </div>
+              <button type="submit" class="btn btn-submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div
+          class="container flex justify-center items-center"
+          style="width: 40%;"
+        >
+          <img
+            src="{{ url_for('static', filename='img/banner.png') }}"
+            alt="banner"
+            style="height: 100%; object-position: 100%;"
+            class="object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

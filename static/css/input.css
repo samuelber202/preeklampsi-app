@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-image: url("/static/img/background.png");
+}
+
+label {
+  @apply uppercase tracking-wider;
+}
+
+.form-control {
+  @apply w-full py-2 mt-2 px-3 border rounded-none border-gray-400 bg-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+}
+
+.btn-submit {
+  background-color: #2254b8;
+  @apply w-full py-2 px-3 text-white uppercase shadow-lg sm:text-sm tracking-wider md:text-lg;
+}
+
+.card {
+  @apply bg-white rounded-md shadow-lg;
+}
