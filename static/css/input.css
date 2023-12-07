@@ -7,6 +7,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.logo {
+  @apply w-[110px] max-sm:w-[90px];
+}
+
 body {
   background-image: url("/static/img/background.png");
 }
@@ -16,13 +20,28 @@ label {
 }
 
 .form-control {
-  @apply w-full py-2 mt-2 px-3 border rounded-sm border-gray-400 bg-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500;
+  @apply w-full py-2 mt-1 px-3 border rounded-sm border-gray-400 bg-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 max-sm:text-sm;
 }
 
 .btn {
-  @apply bg-indigo-700 py-3 px-8 rounded-sm text-white uppercase shadow-lg tracking-wider;
+  @apply bg-indigo-700 py-3 px-8 rounded-sm text-white uppercase shadow-lg tracking-wider max-sm:text-sm;
 }
 
 .card {
   @apply bg-white rounded-md shadow-lg overflow-hidden;
+}
+/* width */
+::-webkit-scrollbar {
+  @apply w-[6px];
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  @apply bg-gray-300 opacity-50;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 opacity-50;
 }

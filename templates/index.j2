@@ -14,11 +14,15 @@
               class="logo"
               src="{{ url_for('static', filename='img/logo.png') }}"
               alt="logo"
-              width="110px"
             />
-            <h1 class="judul uppercase font-bold ml-3 text-2xl">
-              Klasifikasi Severe Future Preeklampsia
-            </h1>
+            <div
+              class="container flex flex-col font-semibold max-sm:text-sm  ml-3"
+            >
+              <p>RS. Bayukarta Karawang</p>
+              <h1 class="judul uppercase font-bold text-2xl max-sm:text-xl">
+                Klasifikasi Severe Future Preeklampsia
+              </h1>
+            </div>
           </div>
           <div class="container h-full">
             <form action="/predict" method="POST">
@@ -126,7 +130,7 @@
         </div>
         <div
           class="container flex justify-center items-center max-sm:hidden"
-          style="width: 40%;"
+          style="width: 60%;"
         >
           <img
             src="{{ url_for('static', filename='img/banner.png') }}"
