@@ -1,12 +1,10 @@
 {% extends "base.j2" %}
 
-{% block title %}
-  <title>Preeklampsia App</title>
-{% endblock %}
+{% block title %}Preeklampsia App{% endblock %}
 
 {% block body %}
   <div class="flex justify-center items-center h-screen">
-    <div class="container card">
+    <div class="container card flex items-center">
       <div class="container flex">
         <div class="container flex flex-col p-10 h-full">
           <div class="container flex items-center mb-5">
@@ -18,14 +16,14 @@
             <div
               class="container flex flex-col font-semibold max-sm:text-sm  ml-3"
             >
-              <p>RS. Bayukarta Karawang</p>
+              <p>RS. ABC</p>
               <h1 class="judul uppercase font-bold text-2xl max-sm:text-xl">
-                Klasifikasi Severe Future Preeklampsia
+                Aplikasi Klasifikasi Preeklampsia
               </h1>
             </div>
           </div>
           <div class="container h-full">
-            <form action="/predict" method="POST">
+            <form action="/result" method="POST">
               <div
                 style="overflow-y: scroll; height: 300px;"
                 class="container grid grid-cols-2 gap-5 max-sm:flex max-sm:flex-col overflow-auto"
@@ -42,7 +40,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="age">Age</label>
+                  <label for="age">Age (Year)</label>
                   <input
                     type="number"
                     class="form-control"
@@ -54,20 +52,36 @@
                     placeholder="Masukkan umur"
                   />
                 </div>
-                <div class="form-group">
-                  <label for="parity">Parity</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="parity"
-                    name="parity"
-                    min="0"
-                    max="10"
-                    placeholder="Masukkan nilai paritas"
-                  />
+                <div class="container flex justify-between w-full gap-2">
+                  <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="height"
+                      name="height"
+                      min="120"
+                      max="220"
+                      step="any"
+                      placeholder="Masukkan tinggi badan"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="weight"
+                      name="weight"
+                      min="40"
+                      max="120"
+                      step="any"
+                      placeholder="Masukkan berat badan"
+                    />
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="gest_age">Gestational Age</label>
+                  <label for="gest_age">Gestational Age (week)</label>
                   <input
                     type="number"
                     class="form-control"
@@ -78,6 +92,87 @@
                     placeholder="Masukkan usia kehamilan (dalam minggu)"
                   />
                 </div>
+                <div class="container flex justify-between w-full gap-2">
+                  <div class="form-group">
+                    <label for="gravida">Gravida</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="gravida"
+                      name="gravida"
+                      min="0"
+                      max="10"
+                      placeholder="Masukkan nilai gravida"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="parity">Parity</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="parity"
+                      name="parity"
+                      min="0"
+                      max="10"
+                      placeholder="Masukkan nilai parity"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="abortus">Abortus</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="abortus"
+                      name="abortus"
+                      min="0"
+                      max="10"
+                      placeholder="Masukkan nilai abortus"
+                    />
+                  </div>
+                </div>
+                <div class="container flex justify-between w-full gap-2">
+                  <div class="form-group">
+                    <label for="systolic">Systolic (mmHg)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="systolic"
+                      name="systolic"
+                      min="30"
+                      max="300"
+                      placeholder="Masukkan nilai sistolik"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="diastolic">Diastolic (mmHg)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="diastolic"
+                      name="diastolic"
+                      min="30"
+                      max="300"
+                      placeholder="Masukkan nilai diastolic"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="proteinuria">Proteinuria</label>
+                  <select
+                    required
+                    class="form-control"
+                    id="proteinuria"
+                    name="proteinuria"
+                  >
+                    <option selected value disabled>-- Pilih --</option>
+                    <option value="0">0</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+
+                  </select>
+                </div>
                 <div class="form-group">
                   <label for="delivery">Delivery Method</label>
                   <select
@@ -87,39 +182,91 @@
                     name="delivery"
                   >
                     <option selected value disabled>-- Pilih --</option>
-                    <option value="SC">SC</option>
-                    <option value="Spontaneous">Spontaneous</option>
+                    <option value="0">Nullipara</option>
+                    <option value="1">SC</option>
+                    <option value="2">Spontaneous</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="sgot">SGOT</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="sgot"
-                    name="sgot"
-                    placeholder="Masukkan nilai SGOT (units/L)"
-                  />
+                <div class="container flex justify-between w-full gap-2">
+                  <div class="form-group">
+                    <label for="creatinine">Creatinine</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="creatinine"
+                      name="creatinine"
+                      min="0"
+                      max="5"
+                      step="any"
+                      placeholder="Masukkan nilai creatinine"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="hemoglobin">Hemoglobin</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hemoglobin"
+                      name="hemoglobin"
+                      min="0"
+                      max="20"
+                      step="any"
+                      placeholder="Masukkan nilai hemoglobin"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="leukocytes">Leukocytes</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="leukocytes"
+                      name="leukocytes"
+                      min="0"
+                      max="20"
+                      step="any"
+                      placeholder="Masukkan nilai leukocytes"
+                    />
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="sgpt">SGPT</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="sgpt"
-                    name="sgpt"
-                    placeholder="Masukkan nilai SGPT (units/L)"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="bun">BUN</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="bun"
-                    name="bun"
-                    placeholder="Masukkan nilai BUN (mg/dL)"
-                  />
+                <div class="container flex justify-between w-full gap-2">
+                  <div class="form-group">
+                    <label for="hematocrit">Hematocrit</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hematocrit"
+                      name="hematocrit"
+                      min="0"
+                      max="50"
+                      step="any"
+                      placeholder="Masukkan nilai hematocrit"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="platelets">Platelets</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="platelets"
+                      name="platelets"
+                      min="0"
+                      max="600"
+                      placeholder="Masukkan nilai platelets"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="erythrocytes">Erythrocytes</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="erythrocytes"
+                      name="erythrocytes"
+                      min="0"
+                      max="10"
+                      step="any"
+                      placeholder="Masukkan nilai erythrocytes"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="container flex justify-end w-full">
