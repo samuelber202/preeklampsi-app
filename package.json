@@ -2,9 +2,8 @@
   "name": "preeklampsi-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "concurrently --kill-others \"npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch\" \"flask --app app.py --debug run\""
+    "dev": "concurrently --kill-others \"npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch\" \"flask --app main.py --debug run\""
   },
   "keywords": [],
   "author": "",
