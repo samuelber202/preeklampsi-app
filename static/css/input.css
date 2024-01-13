@@ -27,7 +27,7 @@ label {
 }
 
 .card {
-  @apply bg-white rounded-md shadow-lg overflow-hidden max-sm:h-full;
+  @apply bg-white rounded-md shadow-lg overflow-hidden max-sm:h-full max-sm:w-full;
 }
 /* width */
 ::-webkit-scrollbar {
