@@ -15,7 +15,7 @@ def ValuePredictor(to_predict_list):
     df.drop(['Height', 'Weight'], axis=1, inplace=True)
     df.insert(1, 'BMI', df.pop('BMI'))
 
-    loaded_model = joblib.load('DT_model.joblib')
+    loaded_model = joblib.load('naive_bayes_model.joblib')
     result = loaded_model.predict(df)
     return result[0]
 
